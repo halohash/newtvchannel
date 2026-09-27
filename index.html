@@ -519,6 +519,12 @@
             }
         );
 
+        videoElement.addEventListener(
+            "pause",
+            () => {
+videoElement.play();
+            }
+        );
 
         videoElement.addEventListener(
             "click",
