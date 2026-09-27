@@ -87,47 +87,40 @@
             overflow: hidden;
         }
 
-        #ticker-label {
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 0 18px;
-
-            font-size: 14px;
-            font-weight: 700;
-
-            white-space: nowrap;
-
-            background: var(--clock-background);
-        }
-
         #ticker-content {
-            flex: 1;
+    flex: 1;
 
-            min-width: 0;
+    min-width: 0;
 
-            display: flex;
-            align-items: center;
+    display: flex;
+    align-items: center;
 
-            overflow: hidden;
+    overflow: hidden;
 
-            white-space: nowrap;
-        }
+    position: relative;
 
-        #ticker-text {
-            display: inline-block;
+    white-space: nowrap;
+}
 
-            padding-left: 24px;
-            padding-right: 24px;
+#ticker-text {
+    position: absolute;
 
-            font-size: 17px;
-            font-weight: 600;
+    left: 100%;
 
-            white-space: nowrap;
-        }
+    display: inline-block;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transform: translateX(0);
+
+    will-change: transform;
+}
 
         #clock-area {
             height: 100%;
@@ -754,68 +747,114 @@
         }
 
 
-        function showTickerItem() {
-            if (!tickerItems.length) {
-                return;
-            }
+function showTickerItem() {
+    if (!tickerItems.length) {
+        return;
+    }
 
-            const item =
-                tickerItems[tickerIndex];
+    const item =
+        tickerItems[tickerIndex];
 
-            if (
-                item.type ===
-                "advertisement"
-            ) {
-                tickerLabelElement.textContent =
-                    config.advertisementLabel ||
-                    "AD";
+    if (
+        item.type ===
+        "advertisement"
+    ) {
+        tickerLabelElement.textContent =
+            config.advertisementLabel ||
+            "AD";
 
-                tickerTextElement.textContent =
-                    item.text;
-            }
+        tickerTextElement.textContent =
+            item.text;
+    }
 
-            if (
-                item.type ===
-                "weather"
-            ) {
-                tickerLabelElement.textContent =
-                    config.weatherLabel ||
-                    "WEATHER";
+    if (
+        item.type ===
+        "weather"
+    ) {
+        tickerLabelElement.textContent =
+            config.weatherLabel ||
+            "WEATHER";
 
-                tickerTextElement.textContent =
-                    weatherElement.textContent;
-            }
+        tickerTextElement.textContent =
+            weatherElement.textContent;
+    }
 
-            tickerIndex++;
+    tickerIndex++;
 
-            if (
-                tickerIndex >=
-                tickerItems.length
-            ) {
-                tickerIndex = 0;
-            }
-        }
+    if (
+        tickerIndex >=
+        tickerItems.length
+    ) {
+        tickerIndex = 0;
+    }
 
+    requestAnimationFrame(
+        () => {
+            const tickerWidth =
+                document
+                    .getElementById(
+                        "ticker-content"
+                    )
+                    .offsetWidth;
 
-        function startTicker() {
-            if (tickerTimer) {
-                clearInterval(tickerTimer);
-            }
+            const textWidth =
+                tickerTextElement
+                    .offsetWidth;
 
-            const duration =
+            const distance =
+                tickerWidth +
+                textWidth;
+
+            const speed =
                 Number(
-                    config.tickerDuration ||
-                    7000
+                    config.tickerSpeed ||
+                    100
                 );
 
+            const duration =
+                distance / speed;
+
+            tickerTextElement.style.transition =
+                "none";
+
+            tickerTextElement.style.transform =
+                "translateX(0)";
+
+            void tickerTextElement.offsetWidth;
+
+            tickerTextElement.style.transition =
+                "transform " +
+                duration +
+                "s linear";
+
+            tickerTextElement.style.transform =
+                "translateX(-" +
+                distance +
+                "px)";
+
+            if (tickerTimer) {
+                clearTimeout(tickerTimer);
+            }
+
             tickerTimer =
-                setInterval(
+                setTimeout(
                     () => {
                         showTickerItem();
                     },
-                    duration
+                    duration * 1000 + 100
                 );
         }
+    );
+}
+
+
+function startTicker() {
+    if (tickerTimer) {
+        clearTimeout(tickerTimer);
+    }
+
+    showTickerItem();
+}
 
 
         async function initialize() {
