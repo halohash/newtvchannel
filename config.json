@@ -12,7 +12,8 @@
     "weatherLabel": "WEATHER",
 
     "tickerDuration": 7000,
-
+"tickerDuration": 7000,
+    "tickerSpeed": 100,
     "advertisements": [
 "You don't want any monkey business going on when getting an oil change. That's why you come to Grease Monkey Auto. We offer oil changes, car washes, and much more. Log onto greasemonkeyauto.com and schedule your appointment.",
       "Mark's Pizzeria prides itself on bringing you the freshest ingredients and the most professional service in Western New York for over 40 years. Log on to markspizzeria.com to get coupons and save big on pizza, wings, and more! We'll treat you like family at Mark's; Simply the best in your neighborhood!",
