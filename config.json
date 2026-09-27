@@ -1,0 +1,56 @@
+{
+    "channelName": "My TV Channel",
+
+    "icon": "icon.png",
+
+    "theme": "default",
+
+    "tickerLabel": "NOW",
+
+    "advertisementLabel": "AD",
+
+    "weatherLabel": "WEATHER",
+
+    "tickerDuration": 7000,
+
+    "advertisements": [
+"You don't want any monkey business going on when getting an oil change. That's why you come to Grease Monkey Auto. We offer oil changes, car washes, and much more. Log onto greasemonkeyauto.com and schedule your appointment.",
+      "Mark's Pizzeria prides itself on bringing you the freshest ingredients and the most professional service in Western New York for over 40 years. Log on to markspizzeria.com to get coupons and save big on pizza, wings, and more! We'll treat you like family at Mark's; Simply the best in your neighborhood!",
+      "If you are interested in TWC, EAS, or anything weather/tech related, join Mist Weather Media! Visit mistwx.com/discord right now!",
+      "Mist Digital Cable is rated #1 out of all cable providers in the United States. Mist Digital Cable is your go-to for everything TV, use our new Mist Live feature at mistlive.tv. Learn more at mistlive.tv/discord.",
+      "Also check out other sims on weatherstar.dev, your place for Local on the 8s simulations!",
+      "Mist Weather Media is now accepting donations through Ko-fi! If you are interested in what we offer and would like to contribute to the upkeeping of our software and services, go to ko-fi.com/mistweathermedia and donate today!"
+    ],
+
+    "themes": {
+        "default": {
+            "tickerBackground": "#111111",
+            "tickerText": "#ffffff",
+            "clockBackground": "#111111",
+            "clockText": "#ffffff",
+            "iconBackground": "#ffffff",
+            "iconColor": "#111111",
+            "weatherBackground": "#222222"
+        },
+
+        "blue": {
+            "tickerBackground": "#003b73",
+            "tickerText": "#ffffff",
+            "clockBackground": "#002b52",
+            "clockText": "#ffffff",
+            "iconBackground": "#ffffff",
+            "iconColor": "#003b73",
+            "weatherBackground": "#005ca8"
+        },
+
+        "red": {
+            "tickerBackground": "#8b0000",
+            "tickerText": "#ffffff",
+            "clockBackground": "#5c0000",
+            "clockText": "#ffffff",
+            "iconBackground": "#ffffff",
+            "iconColor": "#8b0000",
+            "weatherBackground": "#b00000"
+        }
+    }
+}
